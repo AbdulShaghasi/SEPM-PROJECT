@@ -6,7 +6,7 @@ session_start();
 
 <br><a href="create-user.php" class="btn btn-info" role="button">Create User</a>
 <br>
-<br><a href="activation.php" class="btn btn-info" role="button">Change Account Type</a>
+<br><a href="activation.php" class="btn btn-info" role="button">Activate / Deactivate User</a>
 <br>
 <br><a href="update-details.php" class="btn btn-info" role="button">Update User Account Details</a>
 <br>

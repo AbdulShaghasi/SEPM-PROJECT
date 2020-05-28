@@ -96,8 +96,13 @@
                      <label for="contact_num">Contact Number:</label>
                      <input type="text" class="form-control" placeholder="Enter contact_number" name="contact_num" required value="<?php if(isset($contact_num)) echo $contact_num; ?>">
                 </div>
-                
+                <div class = "form-group">
+                     <label for="expiry_date">Expiry Date:</label>
+                     <input type="text" class="form-control" placeholder="E.g. Y-m-d" name="expiry_date" required value="<?php if(isset($expiry_date)) echo $expiry_date; ?>">
+                </div>
+
                 <button type="submit" class="btn btn-info">Update Details</button>
+                <a href="change_password.php" class="btn btn-info" role="button">Change Password</a>
                 <a href="Change_username.php" class="btn btn-info" role="button">Change Username</a>
              </form><br>
          </div>
