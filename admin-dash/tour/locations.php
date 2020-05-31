@@ -5,7 +5,7 @@ session_start();
 
 
 //allow the user to go back to viewing all locations instead of editing one
-if (isset($_POST['unset'])){
+if (isset($_POST['unset'])) {
   unset($_POST);
   header("Location: tours.php");
 }
@@ -13,53 +13,47 @@ if (isset($_POST['unset'])){
 
 
 //database variables
-$db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
+$db = mysqli_connect("127.0.0.1", "root", "password", "SEPM")  or die(mysqli_error($db));
 
-if (isset($_POST['location_name'])){
+if (isset($_POST['location_name'])) {
 
 
-//set location
-  if (empty($_POST['location_name'])){
-  $locationName = $_POST['location_nameOR'];
-  }
-  else {
+  //set location
+  if (empty($_POST['location_name'])) {
+    $locationName = $_POST['location_nameOR'];
+  } else {
     $locationName = $_POST['location_name'];
   }
-//set coords
-  if (empty($_POST['coordinates'])){
+  //set coords
+  if (empty($_POST['coordinates'])) {
     $coords = $_POST['coordinatesOR'];
-  }
-  else {
+  } else {
     $coords = $_POST['coordinates'];
   }
-//set description
-  if (empty($_POST['description'])){
+  //set description
+  if (empty($_POST['description'])) {
     $description = $_POST['descriptionOR'];
-  }
-  else {
+  } else {
     $description = $_POST['description'];
   }
-//set minTime
-  if (empty($_POST['minTime'])){
+  //set minTime
+  if (empty($_POST['minTime'])) {
     $minTime = $_POST['minTimeOR'];
+  } else {
+    $minTime = $_POST['minTime'];
   }
-  else {
-      $minTime = $_POST['minTime'];
-    }
 
-    $location = $_POST['locationID'];
+  $location = $_POST['locationID'];
 
 
-$q = "UPDATE locations SET location_name = '$locationName', XY_Coordinates = '$coords', Description = '$description', Min_time_spent = '$minTime' WHERE location_id = $location";
- mysqli_query($db, $q);
+  $q = "UPDATE locations SET location_name = '$locationName', XY_Coordinates = '$coords', Description = '$description', Min_time_spent = '$minTime' WHERE location_id = $location";
+  mysqli_query($db, $q);
 
 
- $update = 'true';
-unset($_POST);
-header("Location: locations.php?update=true");
-}
-
-else if (isset($_GET['delete'])){
+  $update = 'true';
+  unset($_POST);
+  header("Location: locations.php?update=true");
+} else if (isset($_GET['delete'])) {
   $delete = $_GET['delete'];
   $q = "DELETE FROM locations Where location_id = '$delete'";
   mysqli_query($db, $q) or die(mysqli_error($db));
@@ -67,29 +61,29 @@ else if (isset($_GET['delete'])){
 }
 
 //if edit is set we show the location editor otherwise we display all locations
-else if (isset($_POST['location_id'])){
+else if (isset($_POST['location_id'])) {
 
   include('/Library/WebServer/Documents/inc/header.inc');
   include('../nav.inc');
 
-$location = $_POST['location_id'];
+  $location = $_POST['location_id'];
   $q = "SELECT * FROM locations WHERE location_id='$location'";
 
   if ($result = mysqli_query($db, $q)) {
 
 
 
- while ($row = mysqli_fetch_row($result)) {
-   $locationID = $row[0];
-   $locationName = $row[1];
-   $coords = $row[2];
-   $description = $row[3];
-   $minTime = $row[4];
+    while ($row = mysqli_fetch_row($result)) {
+      $locationID = $row[0];
+      $locationName = $row[1];
+      $coords = $row[2];
+      $description = $row[3];
+      $minTime = $row[4];
 
 
 
 
-  echo "<div class='center'>
+      echo "<div class='center'>
        <div class = 'container login-container'>
            <h2 style='position:center'>Edit Location</h2>
                <form method='post' action=''>
@@ -123,31 +117,26 @@ $location = $_POST['location_id'];
                </form>
            </div>
    </div>";
+    }
 
-
- }
-
- mysqli_free_result($result);
-}
-}
-
-
-else {
+    mysqli_free_result($result);
+  }
+} else {
   include('/Library/WebServer/Documents/inc/header.inc');
   include('../nav.inc');
 
-  if (isset($_GET['update'])){
+  if (isset($_GET['update'])) {
     echo "Location successfully updated.";
     unset($_GET['update']);
   }
 
 
-$q = "select * from locations";
+  $q = "select * from locations";
 
-   if ($result = mysqli_query($db, $q)) {
-  // Fetch one and one row
+  if ($result = mysqli_query($db, $q)) {
+    // Fetch one and one row
 
-  echo "
+    echo "
   <div class='center'>
       <div class = 'container login-container'>
           <h2 style='position:center'>Location Details</h2>
@@ -160,10 +149,10 @@ $q = "select * from locations";
   <th></th>
 </tr>";
 
-  while ($row = mysqli_fetch_row($result)) {
-    //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
+    while ($row = mysqli_fetch_row($result)) {
+      //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
 
-echo"
+      echo "
   <tr>
     <td>$row[1]</td>
     <td>$row[2]</td>
@@ -176,21 +165,16 @@ echo"
     </form>
     </td>
   </tr>";
-
-
-  }
-  echo "</table>
+    }
+    echo "</table>
   </div>
   </div>";
-  mysqli_free_result($result);
-}
-
+    mysqli_free_result($result);
+  }
 }
 
 ?>
 
-
-
 <?php
-    include('/Library/WebServer/Documents/inc/footer.inc');
+include('/Library/WebServer/Documents/inc/footer.inc');
 ?>

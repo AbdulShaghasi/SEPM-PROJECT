@@ -27,9 +27,12 @@ if(isset($_POST['firstname'])){
 }
 
 if (isset($success) == true){
-  echo $success;
+    echo "<div class=\"alert alert-success alert-dismissible fade in\">";
+    echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
+    echo "<strong>Success!</strong> Account Successfully created. click <a href=\"login.php\" >here</a> to login.";
+    echo "</div>";
 }
- ?>
+?>
 <!-- (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date) -->
 
 <!-- start of main content -->
