@@ -1,39 +1,39 @@
 <?php
-    session_start();
-    include('/Library/WebServer/Documents/inc/header.inc');
-    include('../nav.inc');
+session_start();
+include('../../inc/header.inc');
+include('../nav.inc');
 
-    if(isset($_POST['newpass'])){
-        $username = $_SESSION['user'];
-        $newpass = $_POST['newpass'];
-        
-        #connect to db
-        $db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
+if (isset($_POST['newpass'])) {
+    $username = $_SESSION['user'];
+    $newpass = $_POST['newpass'];
 
-        #update password
-        $newpassword = "UPDATE users SET password=SHA('$newpass') WHERE username='$username'";
+    #connect to db
+    $db = mysqli_connect("127.0.0.1", "root", "password", "SEPM")  or die(mysqli_error($db));
 
-        #run the query
-        $changepass = mysqli_query($db, $newpassword) or die(mysqli_error($db));
+    #update password
+    $newpassword = "UPDATE users SET password=SHA('$newpass') WHERE username='$username'";
 
-        header("Location:user-dash.php");
-        exit(0);
-    }
+    #run the query
+    $changepass = mysqli_query($db, $newpassword) or die(mysqli_error($db));
+
+    header("Location:user-dash.php");
+    exit(0);
+}
 ?>
 <div class="center">
-     <div class = "container login-container">
-         <h2 style="position:center"> Change Password </h2>
-             <form method="post" action="">
-                <div class = "form-group">
-                     <label for="newpassword">Enter New Password:</label>
-                     <input type="text" class="form-control" placeholder="Enter New Password" name="newpass" required>
-                </div>
-                <button type="submit" class="btn btn-info">Change Password</button>
-             </form><br>
-         </div>
+    <div class="container login-container">
+        <h2 style="position:center"> Change Password </h2>
+        <form method="post" action="">
+            <div class="form-group">
+                <label for="newpassword">Enter New Password:</label>
+                <input type="text" class="form-control" placeholder="Enter New Password" name="newpass" required>
+            </div>
+            <button type="submit" class="btn btn-info">Change Password</button>
+        </form><br>
+    </div>
 </div>
 
 
 <?php
-    include('../../inc/footer.inc');
+include('../../inc/footer.inc');
 ?>
