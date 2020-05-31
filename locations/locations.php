@@ -1,18 +1,12 @@
 <?php
 session_start();
-include('/Library/WebServer/Documents/inc/header.inc');
+include('../inc/header.inc');
 if(!isset($_SESSION['username'])){
-include('inc/nav.inc');
+include('../inc/nav.inc');
 }
 else {
-
-  include("users-dash/nav.inc");
+  include("../users-dash/nav.inc");
 }
-
-
-
-
-
 
     $db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
     $q = "select * from Tours";

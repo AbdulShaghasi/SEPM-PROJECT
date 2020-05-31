@@ -23,8 +23,9 @@ if (isset($_POST['tourName'])) {
   $q = "INSERT INTO tours (tour_name, tour_type, duration, location)
   VALUES ('$tourName','$tourType','$duration','$allLocations')";
   mysqli_query($db, $q) or die(mysqli_error($db));
+  $success = "success";
 }
-$success = "success";
+
 if (isset($success) == true) {
   echo "<div class=\"alert alert-success alert-dismissible fade in\">";
   echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
