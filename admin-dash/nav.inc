@@ -11,7 +11,11 @@
       <li class="active"><a href="../../admin-dash/tour/tour-dash.php">Tour Dashboard</a></li>
       <li><a href="#"></a></li>
     </ul>
-    
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="../../admin-dash/bookings.php">Bookings</a></li>
+      <li><a href="#"></a></li>
+    </ul>
+
     <ul class="nav navbar-nav navbar-right">
       <li><a href="../../logout.php"><span class="glyphicon glyphicon-user"></span> logout</a></li>
     </ul>
