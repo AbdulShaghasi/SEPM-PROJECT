@@ -26,7 +26,7 @@ if (isset($_POST['newpass'])) {
         <form method="post" action="">
             <div class="form-group">
                 <label for="newpassword">Enter New Password:</label>
-                <input type="text" class="form-control" placeholder="Enter New Password" name="newpass" required>
+                <input type="password" class="form-control" placeholder="Enter New Password" name="newpass" required>
             </div>
             <button type="submit" class="btn btn-info">Change Password</button>
         </form><br>
