@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+include('../../inc/header.inc');
+include('../nav.inc');
+
 $db = mysqli_connect("127.0.0.1", "root", "password", "SEPM")  or die(mysqli_error($db));
 
 
@@ -32,8 +36,6 @@ if (isset($success) == true) {
   echo "<strong>Success!</strong> Tour Created.";
   echo "</div>";
 }
-include('../../inc/header.inc');
-include('../nav.inc');
 ?>
 
 <!-- start of main content -->
