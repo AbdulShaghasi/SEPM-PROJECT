@@ -14,7 +14,6 @@ if(isset($_POST['firstname'])){
   $contact_num = $_POST['contact_num'];
   $username = $_POST['username'];
   $password = $_POST['password'];
-  $account_type = $_POST['account_type'];
   $today = date("Y-m-d");
   $expire = date('Y-m-d', strtotime($today. ' + 3 month'));
 
