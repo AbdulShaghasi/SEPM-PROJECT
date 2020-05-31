@@ -15,8 +15,8 @@ $q= "SELECT * FROM bookings WHERE user_id = '$userID'";
       while ($row = mysqli_fetch_row($result)) {
         $bookingID = $row[0];
         $tourID = $row[1];
-        $_POST['tourid']
-        $bookingDate = $row[3];
+        $_POST['tourid'];
+      //  $bookingDate = $row[3];
 
 
       }
