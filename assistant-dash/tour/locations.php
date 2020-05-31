@@ -59,12 +59,7 @@ unset($_POST);
 header("Location: locations.php?update=true");
 }
 
-else if (isset($_GET['delete'])){
-  $delete = $_GET['delete'];
-  $q = "DELETE FROM locations Where location_id = '$delete'";
-  mysqli_query($db, $q) or die(mysqli_error($db));
-  $message = "Successfully Deleted Location";
-}
+
 
 //if edit is set we show the location editor otherwise we display all locations
 else if (isset($_POST['location_id'])){
@@ -80,7 +75,6 @@ $location = $_POST['location_id'];
 
 
  while ($row = mysqli_fetch_row($result)) {
-   $locationID = $row[0];
    $locationName = $row[1];
    $coords = $row[2];
    $description = $row[3];
@@ -115,7 +109,6 @@ $location = $_POST['location_id'];
                         <input type='hidden'class='form-control' name='locationID' value='$location'>
                      </div>
                      <button type='submit' class='btn btn-info'>Update Location</button>
-                     <a href='tours.php?delete=$locationID' class='btn btn-danger' role='button'> Delete Location </a>
                </form><br>
                <form method='post' action''>
                  <input type='hidden' value='true' name='unset'>
