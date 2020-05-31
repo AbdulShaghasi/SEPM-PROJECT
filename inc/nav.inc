@@ -4,15 +4,11 @@
       <a class="navbar-brand" href="#">I-Robot</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="../main.php">Home</a></li>
+      <li><a href="../main.php">Home</a></li>
       <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="tours.php">Tours</a></li>
-      <li><a href="#"></a></li>
-    </ul>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="locations.php">Locations</a></li>
+
       <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
