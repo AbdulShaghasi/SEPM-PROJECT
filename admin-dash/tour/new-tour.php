@@ -1,13 +1,12 @@
 <?php
 session_start();
-
+$db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
 
 
 if (isset($_POST['tourName'])) {
   $tourName = $_POST['tourName'];
   $tourType = $_POST['tourType'];
   $locations = $_POST['locations'];
-
   $allLocations ;
 
   foreach ($locations as $key => $value) {
@@ -20,10 +19,11 @@ if (isset($_POST['tourName'])) {
     //echo $value;
   }
 
-  $db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
+
   $q = "INSERT INTO tours (tour_name, tour_type, duration, location)
   VALUES ('$tourName','$tourType','$duration','$allLocations')";
   mysqli_query($db, $q) or die(mysqli_error($db));
+  echo "Tour successfully Created";
 }
 
 
@@ -32,8 +32,8 @@ if (isset($_POST['tourName'])) {
     include('/Library/WebServer/Documents/inc/header.inc');
     include('../nav.inc');
 
-    $db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
-    $q = "select * from locations";
+
+
 
 
 
@@ -46,17 +46,38 @@ if (isset($_POST['tourName'])) {
         <h2 style="position:center">New Tour</h2>
             <form method="post" action="" name="Tour">
                 <div class = "form-group">
-                    <label for="firstname">Tour Name:</label>
+                    <label for="tourName">Tour Name:</label>
                     <input type="text" class="form-control" placeholder="Enter Location Name" name="tourName" required>
                 </div>
                 <div class = "form-group">
-                    <label for="lastname">Tour Type:</label>
-                    <input type="text" class="form-control" placeholder="E.g. 37.8136° S, 144.9631° E" name="tourType" required>
-                </div>
+                  <label for="TourType">Tour Type:</label>
+                  <select id="tourType" name="tourType" required>
+                    <option disabled selected value> -- Select a Tour Type -- </option>
+                  <?php
+                  $q = "select * from tourTypes";
+                  if ($result = mysqli_query($db, $q)) {
+
+
+
+                 while ($row = mysqli_fetch_row($result)) {
+                   //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
+
+                   echo"
+                   <option value='".$row[1]."'>"; echo $row[1]."</option>";
+
+                 }
+
+
+                }
+                   ?>
+                   </select>
+                   <br><a href='tourtype.php' class="btn btn-info" role="button"> Create Tours Type </a>
+                   </div>
                 <div class = "form-group">
                   <label for="Locations">Locations:</label>
                   <br>
                   <?php
+                  $q = "select * from locations";
                   if ($result = mysqli_query($db, $q)) {
 
 
@@ -75,6 +96,7 @@ if (isset($_POST['tourName'])) {
                    ?>
                 </div>
                 <button type="submit" class="btn btn-info">Create Tour</button>
+
             </form><br>
         </div>
 </div>

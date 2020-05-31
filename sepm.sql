@@ -32,6 +32,11 @@ Create table tours(
 	location varchar(20)
 );
 
+Create table tourTypes(
+	type_id serial primary key,
+	tour_type varchar(20)
+);
+
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
 VALUES ('mahdi','atai','123 Hopkins','mahdi@gmail.com',12341,'mahdi.atai-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
 
@@ -42,13 +47,13 @@ INSERT INTO users (firstname, lastname, address, email, contact_num, username, p
 VALUES ('liam','hector','123 Hopkins','liam@gmail.com',12341,'liam.hector-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
 
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('Test','Admin','123 Test Address Melbourne','test-ad@gmail.com.com',12341,'test.admin-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
+VALUES ('Test','Admin','123 Test Address Melbourne','test-ad@gmail.com',12341,'test.admin-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
 
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('Test','Assistant','123 Test Address Melbourne','test-as@gmail.com.com',12341,'test.assistant-as',SHA('password'),'assistant','2020-05-03','2020-10-30');
+VALUES ('Test','Assistant','123 Test Address Melbourne','test-as@gmail.com',12341,'test.assistant-as',SHA('password'),'assistant','2020-05-03','2020-10-30');
 
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('Test','User','123 Test Address Melbourne','test@gmail.com.com',12341,'test.user-ad',SHA('password'),'user','2020-05-03','2020-10-30');
+VALUES ('Test','User','123 Test Address Melbourne','test@gmail.com',12341,'test@gmail.com',SHA('password'),'customer','2020-05-03','2020-10-30');
 
 INSERT INTO locations (location_name, XY_Coordinates, Description, Min_time_spent)
 VALUES ('Melbourne','37.8136° S, 144.9631° E','A city in Australia','60');
@@ -58,3 +63,6 @@ VALUES ('Sydney','33.8688° S, 151.2093° E','A city in Australia','30');
 
 INSERT INTO tours (tour_name, tour_type, duration, location)
 VALUES ('Australia','City Tour','90','1,2');
+
+INSERT INTO tourTypes (tour_type)
+VALUES ('City Tour');

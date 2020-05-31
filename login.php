@@ -19,15 +19,15 @@ if(isset($_POST['username']) && isset($_POST['password'])){
                 header("Location:admin-dash/main.php");
                 exit(0);
             }
-            if($type == "assistant"){
+            else if($type == "assistant"){
                 header("Location:assistant-dash/main.php");
                 exit(0);
             }
-            if($type == "customer"){
+            else if($type == "customer"){
                 header("Location:users-dash/main.php");
                 exit(0);
             }
-            if($type == "Deactivate"){
+            else if($type == "Deactivate"){
                 echo "User account Deactivated, Please contact an admin.";
         }
       }
@@ -35,7 +35,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     else{
         unset($_POST['username']);
         unset($_POST['password']);
-        header("Location:main.php");
+        echo "User name or password is incorrect. New to the site? Click <a href='sign-up.php'>here</a> to sign up.";
     }
 }
 
@@ -54,11 +54,11 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             <form method="post" action="">
                 <div class = "form-group">
                     <label for="username">Username:</label>
-                    <input type="text" class="form-control" placeholder="Enter username" name="username">
+                    <input type="text" class="form-control" placeholder="Enter username" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control" placeholder="Enter password" name="password">
+                    <input type="password" class="form-control" placeholder="Enter password" name="password" required>
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox" name="remember"> Remember me</label>
