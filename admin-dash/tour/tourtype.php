@@ -47,7 +47,7 @@ else if (isset($_GET['delete'])){
   $deleted = "Successfully Deleted Tour Type";
 }
 
-include('/Library/WebServer/Documents/inc/header.inc');
+include('../../inc/header.inc');
 include('../nav.inc');
 
 //if edit is set we show the location editor otherwise we display all locations
