@@ -5,15 +5,12 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="../main.php">Home</a></li>
-      <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav">
       <li><a href="tours/tours-list.php">Tours</a></li>
-      <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav">
-      <li><a href="locations/locations-list.php">Locations</a></li>
-      <li><a href="#"></a></li>
+      <li><a href="locations/locations.php">Locations</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="./sign-up.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

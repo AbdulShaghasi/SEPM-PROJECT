@@ -28,7 +28,7 @@ else{
 
 if(isset($message)){
   echo $message;
-  unsset($message);
+  unset($message);
 }
 
 include('/Library/WebServer/Documents/inc/header.inc');
