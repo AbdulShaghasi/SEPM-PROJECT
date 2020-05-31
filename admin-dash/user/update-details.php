@@ -39,7 +39,6 @@
         $email=$_POST['email'];
         $username = $_SESSION['user'];
         $contact_num=$_POST['contact_num'];
-        $expiry_date=$_POST['expiry_date'];
         
         
         # update the database
@@ -48,8 +47,7 @@
                                         lastname='$lastname',
                                         address='$address',
                                         email='$email',
-                                        contact_num='$contact_num',
-                                        expiry_date='$expiry_date' WHERE username='$username'";
+                                        contact_num='$contact_num' WHERE username='$username'";
         $applynewdetails = mysqli_query($db, $newdetails) or die(mysqli_error($db));
     }
 ?>
