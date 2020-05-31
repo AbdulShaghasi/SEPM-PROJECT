@@ -1,5 +1,6 @@
 <?php
 
+$today = date("Y-m-d H:i:s");
 // process login user based on username
 if(isset($_POST['username']) && isset($_POST['password'])){
     $username = $_POST['username'];
@@ -15,6 +16,11 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         $_SESSION['username'] = $username;
         while($row = mysqli_fetch_array($results)) {
             $type = $row["account_type"];
+            $_SESSION["last_login"] = $row["last_login"];
+            //sets last login time
+            $q = "UPDATE users SET last_login = '$today' WHERE username='$username'";
+            mysqli_query($db, $q) or die(mysqli_error($db));
+
             if($type == "admin"){
                 header("Location:admin-dash/main.php");
                 exit(0);
