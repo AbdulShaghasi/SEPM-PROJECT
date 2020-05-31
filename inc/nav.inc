@@ -8,11 +8,11 @@
       <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="tours/tours-list.php">Tours</a></li>
+      <li class="active"><a href="tours.php">Tours</a></li>
       <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="locations/locations-list.php">Locations</a></li>
+      <li class="active"><a href="locations.php">Locations</a></li>
       <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

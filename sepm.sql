@@ -38,6 +38,13 @@ Create table tourTypes(
 	tour_type varchar(20)
 );
 
+Create table bookings(
+	booking_id serial primary key,
+	tour_id varchar(20),
+	user_id varchar(40),
+	booking_date datetime
+);
+
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
 VALUES ('mahdi','atai','123 Hopkins','mahdi@gmail.com',12341,'mahdi.atai-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
 
