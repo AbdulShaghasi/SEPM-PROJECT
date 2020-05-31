@@ -1,12 +1,12 @@
 <?php
 session_start();
+include('/Library/WebServer/Documents/inc/header.inc');
+include('inc/nav.inc');
 
 
 
 
 
-    include('/Library/WebServer/Documents/inc/header.inc');
-    include('../nav.inc');
 
     $db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
     $q = "select * from Tours";
@@ -18,7 +18,7 @@ session_start();
   echo "
   <div class='center'>
       <div class = 'container login-container'>
-          <h2 style='position:center'>Tour Details</h2>
+          <h2 style='position:center'>Our Tours</h2>
   <table  width='80%'>
 <tr>
   <th>Tour Name</th>
@@ -40,7 +40,7 @@ echo"
     <td>
     <form method='post' action''>
 
-    <button type='submit' class='btn btn-link' value = $row[4]>Edit </button>
+    <button type='submit' class='btn btn-link' value = $row[4]>Book Tour</button>
     </form>
     </td>
   </tr>";
