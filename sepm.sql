@@ -13,7 +13,8 @@ create table users(
 	password char(40),
 	account_type varchar(20),
 	reg_date datetime,
-	expiry_date datetime
+	expiry_date datetime,
+	last_login datetime
 );
 
 Create table locations(
@@ -43,8 +44,8 @@ VALUES ('mahdi','atai','123 Hopkins','mahdi@gmail.com',12341,'mahdi.atai-ad',SHA
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
 VALUES ('abdul','shaghasi','123 Hopkins','abdul@gmail.com',12341,'abdul.shaghasi-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
 
-INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('liam','hector','123 Hopkins','liam@gmail.com',12341,'liam.hector-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
+INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date, last_login)
+VALUES ('liam','hector','123 Hopkins','liam@gmail.com',12341,'liam.hector-ad',SHA('password'),'admin','2020-05-03','2020-10-30', '2020-05-03');
 
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
 VALUES ('Test','Admin','123 Test Address Melbourne','test-ad@gmail.com',12341,'test.admin-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
