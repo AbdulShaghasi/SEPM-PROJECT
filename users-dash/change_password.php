@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include('../../inc/header.inc');
-    include('../nav.inc');
+    include('../inc/header.inc');
+    include('nav.inc');
 
     if(isset($_POST['newpass'])){
         $username = $_SESSION['user'];
@@ -16,7 +16,7 @@
         #run the query
         $changepass = mysqli_query($db, $newpassword) or die(mysqli_error($db));
 
-        header("Location:user-dash.php");
+        header("Location:main.php");
         exit(0);
     }
 ?>
@@ -35,5 +35,5 @@
 
 
 <?php
-    include('../../inc/footer.inc');
+    include('../inc/footer.inc');
 ?>

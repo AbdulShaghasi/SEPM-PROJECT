@@ -1,13 +1,12 @@
 <?php
     session_start();
-    include('/Library/WebServer/Documents/inc/header.inc');
-    include('../nav.inc');
-
-    # get details of the provided username
-    if(isset($_POST['searchusername'])) $uname = $_POST['searchusername'];
+    include('../inc/header.inc');
+    include('nav.inc');
 
     #connect to db
     $db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
+
+    $uname = $_SESSION['username'];
 
     # connect to the database
     if(isset($uname)){
@@ -37,7 +36,6 @@
         $lastname=$_POST['lastname'];
         $address=$_POST['address'];
         $email=$_POST['email'];
-        $username = $_SESSION['user'];
         $contact_num=$_POST['contact_num'];
         $expiry_date=$_POST['expiry_date'];
         
@@ -53,20 +51,6 @@
         $applynewdetails = mysqli_query($db, $newdetails) or die(mysqli_error($db));
     }
 ?>
-
-<!-- search user by username -->
-<div class="center">
-     <div class = "container login-container">
-         <h2 style="position:center"> Search User</h2>
-             <form method="post" action="">
-                 <div class="form-group">
-                     <label for="searchusername">Username:</label>
-                     <input type="text" class="form-control" placeholder="Username" name="searchusername" required>
-                 </div>
-                 <button type="submit" class="btn btn-info">Search</button>
-             </form><br>
-         </div>
-</div>
 <!-- start of main content -->
 <div class="center">
      <div class = "container login-container">
@@ -74,36 +58,35 @@
              <form method="post" action="">
                 <div class = "form-group">
                      <label for="firstname">Username:</label>
-                     <input type="text" class="form-control" readonly="readonly" name="username" required value="<?php if(isset($username)) echo $username; ?>">
+                     <input type="text" class="form-control" readonly="readonly" name="username" required value="<?php echo $_SESSION['username'] ?>">
                 </div>
                 <div class = "form-group">
                      <label for="firstname">First Name:</label>
-                     <input type="text" class="form-control" placeholder="Enter First Name" name="firstname" required value="<?php if(isset($firstname)) echo $firstname; ?>">
+                     <input type="text" class="form-control" placeholder="Enter First Name" name="firstname" required value="<?php echo $firstname; ?>">
                 </div>
                 <div class = "form-group">
                      <label for="lastname">Last Name:</label>
-                     <input type="text" class="form-control" placeholder="Enter lastname" name="lastname" required value="<?php if(isset($lastname)) echo $lastname; ?>">
+                     <input type="text" class="form-control" placeholder="Enter lastname" name="lastname" required value="<?php echo $lastname; ?>">
                 </div>
                 <div class = "form-group">
                      <label for="address">Address:</label>
-                     <input type="text" class="form-control" placeholder="Enter address" name="address" required value="<?php if(isset($address)) echo $address; ?>">
+                     <input type="text" class="form-control" placeholder="Enter address" name="address" required value="<?php echo $address; ?>">
                 </div>
                 <div class = "form-group">
                      <label for="email">Email:</label>
-                     <input type="email" class="form-control" placeholder="Enter email" name="email" required value="<?php if(isset($email)) echo $email; ?>">
+                     <input type="email" class="form-control" placeholder="Enter email" name="email" required value="<?php echo $email; ?>">
                 </div>
                 <div class = "form-group">
                      <label for="contact_num">Contact Number:</label>
-                     <input type="text" class="form-control" placeholder="Enter contact_number" name="contact_num" required value="<?php if(isset($contact_num)) echo $contact_num; ?>">
+                     <input type="text" class="form-control" placeholder="Enter contact_number" name="contact_num" required value="<?php echo $contact_num; ?>">
                 </div>
                 <div class = "form-group">
                      <label for="expiry_date">Expiry Date:</label>
-                     <input type="text" class="form-control" placeholder="E.g. Y-m-d" name="expiry_date" required value="<?php if(isset($expiry_date)) echo $expiry_date; ?>">
+                     <input type="text" class="form-control" placeholder="E.g. Y-m-d" name="expiry_date" required value="<?php echo $expiry_date; ?>">
                 </div>
 
                 <button type="submit" class="btn btn-info">Update Details</button>
                 <a href="change_password.php" class="btn btn-info" role="button">Change Password</a>
-                <a href="Change_username.php" class="btn btn-info" role="button">Change Username</a>
              </form><br>
          </div>
 </div>
