@@ -7,10 +7,15 @@
       <li><a href="../main.php">Home</a></li>
     </ul>
     <ul class="nav navbar-nav">
+<<<<<<< HEAD
       <li><a href="tours/tours-list.php">Tours</a></li>
     </ul>
     <ul class="nav navbar-nav">
       <li><a href="locations/locations.php">Locations</a></li>
+=======
+
+      <li><a href="#"></a></li>
+>>>>>>> origin/f/build
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="./sign-up.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

@@ -17,7 +17,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     if (mysqli_num_rows($results) > 0) {
         session_start();
         $_SESSION['username'] = $username;
-        while ($row = mysqli_fetch_array($results)) {
+
+        while($row = mysqli_fetch_array($results)) {
             $type = $row["account_type"];
             $_SESSION["last_login"] = $row["last_login"];
             $_SESSION['userID'] = $row[0];
