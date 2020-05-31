@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include('/Library/WebServer/Documents/inc/header.inc');
+    include('../../inc/header.inc');
     include('../nav.inc');
 
     if(isset($_POST['newusername'])){
