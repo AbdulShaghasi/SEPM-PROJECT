@@ -11,7 +11,8 @@ if (isset($_POST['tourName'])) {
   $tourName = $_POST['tourName'];
   $tourType = $_POST['tourType'];
   $locations = $_POST['locations'];
-  $allLocations;
+  $allLocations = null;
+  $duration = null;
 
   foreach ($locations as $key => $value) {
     $thing = explode(",", $value);
