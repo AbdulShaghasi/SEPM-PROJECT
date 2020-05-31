@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="main.php">I-Robot</a>
+      <a class="navbar-brand" href="main.php">iRobot</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="../users-dash/booked-tours.php">Booked Tours</a></li>

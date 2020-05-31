@@ -44,7 +44,7 @@ if (isset($success)) echo $success;
           <option disabled selected value> -- select an option -- </option>
           <option value="admin">Admin</option>
           <option value="assistant">Assistant</option>
-          <option value="user">Normal User</option>
+          <option value="customer">Normal User</option>
         </select>
       </div>
       <button type="submit" class="btn btn-info">Update User</button>
