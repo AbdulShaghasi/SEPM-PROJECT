@@ -43,7 +43,7 @@ if (isset($_POST['username'])) {
 
 
     # update the database
-    $newdetails = "UPDATE users SET 
+    $newdetails = "UPDATE users SET
                                         firstname='$firstname',
                                         lastname='$lastname',
                                         address='$address',
@@ -51,14 +51,14 @@ if (isset($_POST['username'])) {
                                         contact_num='$contact_num',
                                         expiry_date='$expiry_date' WHERE username='$username'";
     $applynewdetails = mysqli_query($db, $newdetails) or die(mysqli_error($db));
-}
-$success = "success";
+    $success = "success";
 
-if (isset($success) == true) {
-    echo "<div class=\"alert alert-success alert-dismissible fade in\">";
-    echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
-    echo "<strong>Success!</strong> Account Details updated.";
-    echo "</div>";
+    if (isset($success) == true) {
+        echo "<div class=\"alert alert-success alert-dismissible fade in\">";
+        echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
+        echo "<strong>Success!</strong> Account Details updated.";
+        echo "</div>";
+    }
 }
 ?>
 

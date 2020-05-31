@@ -81,7 +81,7 @@ $i++;
     echo "</td>
     <td>
 
-    <form method='post' action='bookings.php'>
+    <form method='post' action='users-dash/bookings.php'>
     <input type='hidden' value=$tourid name='tourID'>
     <input type='hidden' value=$name name='tourName'>
     <input type='hidden' value=$type name='tourType'>

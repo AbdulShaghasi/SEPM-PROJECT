@@ -7,7 +7,7 @@ session_start();
 //allow the user to go back to viewing all locations instead of editing one
 if (isset($_POST['unset'])) {
   unset($_POST);
-  header("Location: tours.php");
+  header("Location: locations.php");
 }
 
 
@@ -53,11 +53,13 @@ if (isset($_POST['location_name'])) {
   $update = 'true';
   unset($_POST);
   header("Location: locations.php?update=true");
-} else if (isset($_GET['delete'])) {
+}
+ else if (isset($_GET['delete'])) {
   $delete = $_GET['delete'];
   $q = "DELETE FROM locations Where location_id = '$delete'";
   mysqli_query($db, $q) or die(mysqli_error($db));
   $message = "Successfully Deleted Location";
+    header("Location: locations.php");
 }
 
 //if edit is set we show the location editor otherwise we display all locations
@@ -109,7 +111,7 @@ else if (isset($_POST['location_id'])) {
                         <input type='hidden'class='form-control' name='locationID' value='$location'>
                      </div>
                      <button type='submit' class='btn btn-info'>Update Location</button>
-                     <a href='tours.php?delete=$locationID' class='btn btn-danger' role='button'> Delete Location </a>
+                     <a href='locations.php?delete=$locationID' class='btn btn-danger' role='button'> Delete Location </a>
                </form><br>
                <form method='post' action''>
                  <input type='hidden' value='true' name='unset'>
@@ -121,7 +123,29 @@ else if (isset($_POST['location_id'])) {
 
     mysqli_free_result($result);
   }
-} else {
+
+
+
+
+}
+elseif (isset($_POST['Copyname'])){
+  //var_dump($_POST);
+  $copyName = $_POST['Copyname']." -Copy";
+  $copyCo = $_POST['copyCo'];
+  $copyDesc = $_POST['copyDesc'];
+  $copyMin = $_POST['copyMin'];
+
+  $q = "INSERT INTO locations (location_name, XY_Coordinates, Description, Min_time_spent)
+VALUES ('$copyName','$copyCo','$copyDesc','$copyMin')";
+
+  $results = mysqli_query($db, $q) or die(mysqli_error($db));
+
+  $success = "Successfully added Location!";
+  unset($_POST);
+  header("Location: locations.php");
+}
+
+ else {
   include('/Library/WebServer/Documents/inc/header.inc');
   include('../nav.inc');
 
@@ -151,17 +175,30 @@ else if (isset($_POST['location_id'])) {
 
     while ($row = mysqli_fetch_row($result)) {
       //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
+      $locationName = $row[1];
+      $cords = $row[2];
+      $desc = $row[3];
+      $min = $row[4];
 
       echo "
   <tr>
-    <td>$row[1]</td>
-    <td>$row[2]</td>
-    <td>$row[3]</td>
-    <td>$row[4]</td>
+    <td>$locationName</td>
+    <td>$cords</td>
+    <td>$desc</td>
+    <td>$min</td>
     <td>
     <form method='post' action='locations.php'>
       <input type='hidden' value=$row[0] name='location_id'>
     <button type='submit' class='btn btn-link'>Edit </button>
+    </form>
+    </td>
+    <td>
+    <form method='post' action='locations.php'>
+      <input type='hidden' value='$locationName' name='Copyname'>
+      <input type='hidden' value='$cords' name='copyCo'>
+      <input type='hidden' value='$desc' name='copyDesc'>
+      <input type='hidden' value='$min' name='copyMin'>
+    <button type='submit' class='btn btn-link'>Copy Location </button>
     </form>
     </td>
   </tr>";
