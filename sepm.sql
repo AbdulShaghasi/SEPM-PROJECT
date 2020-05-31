@@ -40,8 +40,8 @@ Create table tourTypes(
 
 Create table bookings(
 	booking_id serial primary key,
-	tour_name varchar(20),
-	user_name varchar(40),
+	tour_id varchar(20),
+	user_id varchar(40),
 	booking_date datetime
 );
 

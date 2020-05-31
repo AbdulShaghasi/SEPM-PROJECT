@@ -1,7 +1,13 @@
 <?php
 session_start();
 include('/Library/WebServer/Documents/inc/header.inc');
+if(!isset($_SESSION['username'])){
 include('inc/nav.inc');
+}
+else {
+
+  include("users-dash/nav.inc");
+}
 
 
 
