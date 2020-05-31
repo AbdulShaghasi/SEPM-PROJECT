@@ -3,7 +3,7 @@ session_start();
 
 
 //allow the user to go back to viewing all locations instead of editing one
-if (isset($_POST['unset'])){
+if (isset($_POST['unset'])) {
   unset($_POST);
   header("Location: tours.php");
 }
@@ -11,47 +11,40 @@ if (isset($_POST['unset'])){
 
 
 
-    $db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
+$db = mysqli_connect("127.0.0.1", "root", "password", "SEPM")  or die(mysqli_error($db));
 
 //if the tour name has been posted we can update the tour
-if (isset($_POST['tour_name'])){
+if (isset($_POST['tour_name'])) {
 
 
-//set location
-  if (empty($_POST['tour_name'])){
-  $tourName = $_POST['tour_nameOR'];
-  }
-  else {
+  //set location
+  if (empty($_POST['tour_name'])) {
+    $tourName = $_POST['tour_nameOR'];
+  } else {
     $tourName = $_POST['tour_name'];
   }
-//set coords
-  if (empty($_POST['tour_type'])){
+  //set coords
+  if (empty($_POST['tour_type'])) {
     $tour_type = $_POST['tour_typeOR'];
-  }
-  else {
+  } else {
     $tour_type = $_POST['tour_type'];
   }
 
-$locations = $_POST['locations'];
+  $locations = $_POST['locations'];
 
-$tourID = $_POST['tour_ID'];
+  $tourID = $_POST['tour_ID'];
 
-foreach ($locations as $key => $value) {
-  $thing = explode(",",$value);
-  $allLocations = $allLocations . $thing[0].",";
-  $duration = $duration + $thing[1];
+  foreach ($locations as $key => $value) {
+    $thing = explode(",", $value);
+    $allLocations = $allLocations . $thing[0] . ",";
+    $duration = $duration + $thing[1];
+  }
 
-
-
-}
-
-$q = "UPDATE tours SET tour_name = '$tourName', tour_type ='$tour_type', duration = '$duration', location = '$allLocations' WHERE tour_id = '$tourID'";
-mysqli_query($db, $q) or die(mysqli_error($db));
-$message =  "Tour successfully Updated";
-$_POST['unset'] = true;
-}
-
-else if (isset($_GET['delete'])){
+  $q = "UPDATE tours SET tour_name = '$tourName', tour_type ='$tour_type', duration = '$duration', location = '$allLocations' WHERE tour_id = '$tourID'";
+  mysqli_query($db, $q) or die(mysqli_error($db));
+  $message =  "Tour successfully Updated";
+  $_POST['unset'] = true;
+} else if (isset($_GET['delete'])) {
   $delete = $_GET['delete'];
   $q = "DELETE FROM tours Where tour_id = '$delete'";
   mysqli_query($db, $q) or die(mysqli_error($db));
@@ -61,23 +54,23 @@ else if (isset($_GET['delete'])){
 include('/Library/WebServer/Documents/inc/header.inc');
 include('../nav.inc');
 
-    //if edit is set we show the location editor otherwise we display all locations
-  if (isset($_POST['tour_id'])){
+//if edit is set we show the location editor otherwise we display all locations
+if (isset($_POST['tour_id'])) {
 
 
 
-    $tour = $_POST['tour_id'];
-      $q = "SELECT * FROM tours WHERE tour_id='$tour'";
+  $tour = $_POST['tour_id'];
+  $q = "SELECT * FROM tours WHERE tour_id='$tour'";
 
-      if ($result = mysqli_query($db, $q)) {
+  if ($result = mysqli_query($db, $q)) {
 
 
 
-     while ($row = mysqli_fetch_row($result)) {
-       $tourID =$row[0];
-       $tourName = $row[1];
-       $tourType = $row[2];
-       $locations = $row[4];
+    while ($row = mysqli_fetch_row($result)) {
+      $tourID = $row[0];
+      $tourName = $row[1];
+      $tourType = $row[2];
+      $locations = $row[4];
 
 
 
@@ -100,48 +93,43 @@ include('../nav.inc');
                         <select id='tourType' name='tourType' required>
                           <option disabled selected value='$tourType'>$tourType</option>";
 
-                        $q = "select * from tourTypes";
-                        if ($result = mysqli_query($db, $q)) {
+      $q = "select * from tourTypes";
+      if ($result = mysqli_query($db, $q)) {
 
 
 
-                       while ($row = mysqli_fetch_row($result)) {
-                         //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
+        while ($row = mysqli_fetch_row($result)) {
+          //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
 
-                         echo"
-                         <option value='".$row[1]."'>"; echo $row[1]."</option>";
-
-                       }
-
-
-                      }
-                        echo "
+          echo "
+                         <option value='" . $row[1] . "'>";
+          echo $row[1] . "</option>";
+        }
+      }
+      echo "
                          </select>
                          <br><a href='tourtype.php' class='btn btn-info' role='button'> Create Tours Type </a>
                          </div>
                          <div>
                          <label for='Locations'>Locations:</label><br>";
 
-                         $q = "select * from locations";
-                         if ($result = mysqli_query($db, $q)) {
+      $q = "select * from locations";
+      if ($result = mysqli_query($db, $q)) {
 
-                        while ($row = mysqli_fetch_row($result)) {
-                          //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
+        while ($row = mysqli_fetch_row($result)) {
+          //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
 
-                          echo"
-                          <input type='checkbox' id=".$row[0]." name='locations[]' value=".$row[0].",".$row[4].","."  ";
-                           if (strpos($locations, $row[0]) !== false) {
-                             echo "checked";
-                           }
-                            echo"
+          echo "
+                          <input type='checkbox' id=" . $row[0] . " name='locations[]' value=" . $row[0] . "," . $row[4] . "," . "  ";
+          if (strpos($locations, $row[0]) !== false) {
+            echo "checked";
+          }
+          echo "
                            >
-                       <label for=".$row[0]."> ".$row[1]."</label><br>";
-
-                        }
-
-
-                       }
-                         echo "</div>
+                       <label for=" . $row[0] . "> " . $row[1] . "</label><br>";
+        }
+      }
+      echo "</div>
                          <button type='submit' class='btn btn-info'>Update Tour</button>
                           <a href='tours.php?delete=$tourID' class='btn btn-danger' role='button'> Delete Tour </a>
                    </form><br>
@@ -151,36 +139,27 @@ include('../nav.inc');
                    </form>
                </div>
        </div>";
-
-
-     }
-
-     mysqli_free_result($result);
-    }
     }
 
+    mysqli_free_result($result);
+  }
+} else {
 
+  if (isset($message)) {
+    echo $message;
+    unset($message);
+  }
 
+  //fetch locations
+  $q = "select * from locations";
+  if ($result = mysqli_query($db, $q)) {
+    $x = 0;
+    while ($row = mysqli_fetch_row($result)) {
 
-
-
-   else {
-
-     if (isset($message)){
-       echo $message;
-       unset($message);
-     }
-
-//fetch locations
-     $q = "select * from locations";
-     if ($result = mysqli_query($db, $q)) {
-       $x = 0;
-       while ($row = mysqli_fetch_row($result)) {
-
-         $list[] =  array($x =>  $row[0], $row[1]);
-         $x++;
-       }
-     }
+      $list[] =  array($x =>  $row[0], $row[1]);
+      $x++;
+    }
+  }
 
 
 
@@ -210,30 +189,25 @@ include('../nav.inc');
     $duration = $row[3];
     $location = $row[4];
 
-echo"
+    echo "
   <tr>
     <td>$name</td>
     <td>$type</td>
     <td>$duration</td>
     <td>";
 
-$loc = explode(",", $location);
+    $loc = explode(",", $location);
 
-$i =0;
+    $i = 0;
 
+    foreach ($list as  $val) {
 
+      if (strpos($location, $val[$i]) !== false) {
+        echo $val[$i + 1] . " ";
+      }
 
-foreach ($list as  $val){
-
-if (strpos($location, $val[$i]) !== false) {
-    echo $val[$i+1]. " ";
-}
-
-
-
-$i++;
-
-}
+      $i++;
+    }
 
 
     echo "</td>
@@ -245,45 +219,38 @@ $i++;
     </form>
     </td>
   </tr>";
-
-
   }
 
-//   <div>
-//   <label for='Locations'>Locations:</label><br>";
-//
-//   $q = "select * from locations";
-//   if ($result = mysqli_query($db, $q)) {
-//
-//  while ($row = mysqli_fetch_row($result)) {
-//    //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
-//
-//    echo"
-//    <input type='checkbox' id=".$row[0]." name='locations[]' value=".$row[0].",".$row[4].","."  ";
-//     if (strpos($locations, $row[0]) !== false) {
-//       echo "checked";
-//     }
-//      echo"
-//     >
-// <label for=".$row[0]."> ".$row[1]."</label><br>";
-//
-//  }
-//
-//
-// }
-//   echo "</div>
+  //   <div>
+  //   <label for='Locations'>Locations:</label><br>";
+  //
+  //   $q = "select * from locations";
+  //   if ($result = mysqli_query($db, $q)) {
+  //
+  //  while ($row = mysqli_fetch_row($result)) {
+  //    //printf ("%s %s %s %s\n", $row[1], $row[2], $row[3], $row[4]."<br>");
+  //
+  //    echo"
+  //    <input type='checkbox' id=".$row[0]." name='locations[]' value=".$row[0].",".$row[4].","."  ";
+  //     if (strpos($locations, $row[0]) !== false) {
+  //       echo "checked";
+  //     }
+  //      echo"
+  //     >
+  // <label for=".$row[0]."> ".$row[1]."</label><br>";
+  //
+  //  }
+  //
+  //
+  // }
+  //   echo "</div>
   echo "</table>
   </div>
   </div>";
   mysqli_free_result($result);
 }
-
-
-
 ?>
 
-
-
 <?php
-    include('/Library/WebServer/Documents/inc/footer.inc');
+include('/Library/WebServer/Documents/inc/footer.inc');
 ?>
