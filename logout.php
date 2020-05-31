@@ -1,4 +1,5 @@
 <?php
-    unset($_SESSION);
+session_start();
+    unset($_SESSION['username']);
     header("Location:main.php");
 ?>
