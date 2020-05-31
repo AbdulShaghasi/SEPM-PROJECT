@@ -12,14 +12,13 @@ if(isset($_POST['firstname'])){
   $address = $_POST['address'];
   $email = $_POST['email'];
   $contact_num = $_POST['contact_num'];
-  $username = $_POST['username'];
   $password = $_POST['password'];
   $today = date("Y-m-d");
   $expire = date('Y-m-d', strtotime($today. ' + 3 month'));
 
   $db = mysqli_connect("127.0.0.1", "root","password", "SEPM")  or die(mysqli_error($db));
   $q = "INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-  VALUES ('$firstname','$lastname','$address','$email',$contact_num,'$username',SHA('$password'),'customer','$today','$expire')";
+  VALUES ('$firstname','$lastname','$address','$email',$contact_num,'$email',SHA('$password'),'customer','$today','$expire')";
 
   $results = mysqli_query($db, $q) or die(mysqli_error($db));
 
@@ -57,10 +56,6 @@ if (isset($success) == true){
                  <div class = "form-group">
                      <label for="contact_num">Contact Number:</label>
                      <input type="text" class="form-control" placeholder="Enter contact_number" name="contact_num" required>
-                 </div>
-                 <div class="form-group">
-                     <label for="username">Username:</label>
-                     <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
                  </div>
                  <div class="form-group">
                      <label for="password">Password:</label>
