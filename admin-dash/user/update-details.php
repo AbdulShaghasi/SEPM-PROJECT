@@ -43,7 +43,7 @@ if (isset($_POST['username'])) {
 
 
     # update the database
-    $newdetails = "UPDATE users SET 
+    $newdetails = "UPDATE users SET
                                         firstname='$firstname',
                                         lastname='$lastname',
                                         address='$address',

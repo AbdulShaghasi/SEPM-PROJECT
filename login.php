@@ -1,10 +1,10 @@
 <?php
-
-//nav bar
+session_start();
 include("inc/header.inc");
 include("inc/nav.inc");
 
 $today = date("Y-m-d H:i:s");
+
 // process login user based on username
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
@@ -15,7 +15,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $results = mysqli_query($db, $q) or die(mysqli_error($db));
 
     if (mysqli_num_rows($results) > 0) {
-        session_start();
+
         $_SESSION['username'] = $username;
 
         while($row = mysqli_fetch_array($results)) {
@@ -39,9 +39,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 echo "User account Deactivated, Please contact an admin.";
             }
         }
+        //nav bar
+
     } else {
         unset($_POST['username']);
         unset($_POST['password']);
+        //nav bar
+
 
         echo "<div class=\"alert alert-danger alert-dismissible fade in\">";
         echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
@@ -49,10 +53,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         echo "</div>";
     }
 }
-
-
-
-
 ?>
 
 
