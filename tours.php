@@ -35,7 +35,7 @@ else {
   <div class='center'>
       <div class = 'container login-container'>
           <h2 style='position:center'>Tour Details</h2>
-  <table  width='80%'>
+  <table  width='80%' class=\"table\">
 <tr>
   <th>Tour Name</th>
   <th>Tour Type</th>

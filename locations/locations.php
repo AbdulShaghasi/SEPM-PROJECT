@@ -19,7 +19,7 @@ else {
      <div class='center'>
          <div class = 'container login-container'>
              <h2 style='position:center'>Our Tour Locations</h2>
-     <table  width='80%'>
+     <table  width='80%' class=\"table\">
      <tr>
      <th>Location Name</th>
      <th>Coordinates</th>
