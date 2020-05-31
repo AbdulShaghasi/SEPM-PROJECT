@@ -68,6 +68,7 @@ if (isset($success) == true) {
           }
           ?>
         </select>
+        <br/>
         <br><a href='tourtype.php' class="btn btn-info" role="button"> Create Tours Type </a>
       </div>
       <div class="form-group">

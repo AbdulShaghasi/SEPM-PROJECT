@@ -24,7 +24,7 @@ if(isset($_POST['firstname'])){
 }
 
 include('/Library/WebServer/Documents/inc/header.inc');
-include('../nav.inc');
+include('nav.inc');
 if (isset($success) == true){
   echo $success;
 }

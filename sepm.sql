@@ -46,22 +46,13 @@ Create table bookings(
 );
 
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('mahdi','atai','123 Hopkins','mahdi@gmail.com',12341,'mahdi.atai-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
+VALUES ('admin','user','123 Hopkins','admin@gmail.com',12341,'admin-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
 
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('abdul','shaghasi','123 Hopkins','abdul@gmail.com',12341,'abdul.shaghasi-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
+VALUES ('assistant','user','123 Hopkins','assitant@gmail.com',12341,'assistant-as',SHA('password'),'assistant','2020-05-03','2020-10-30');
 
 INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date, last_login)
-VALUES ('liam','hector','123 Hopkins','liam@gmail.com',12341,'liam.hector-ad',SHA('password'),'admin','2020-05-03','2020-10-30', '2020-05-03');
-
-INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('Test','Admin','123 Test Address Melbourne','test-ad@gmail.com',12341,'test.admin-ad',SHA('password'),'admin','2020-05-03','2020-10-30');
-
-INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('Test','Assistant','123 Test Address Melbourne','test-as@gmail.com',12341,'test.assistant-as',SHA('password'),'assistant','2020-05-03','2020-10-30');
-
-INSERT INTO users (firstname, lastname, address, email, contact_num, username, password, account_type, reg_date, expiry_date)
-VALUES ('Test','User','123 Test Address Melbourne','test@gmail.com',12341,'test@gmail.com',SHA('password'),'customer','2020-05-03','2020-10-30');
+VALUES ('reg','user','123 Hopkins','reg@user.com',12341,'reg@user.com',SHA('password'),'customer','2020-05-03','2020-10-30', '2020-05-03');
 
 INSERT INTO locations (location_name, XY_Coordinates, Description, Min_time_spent)
 VALUES ('Melbourne','37.8136° S, 144.9631° E','A city in Australia','60');
