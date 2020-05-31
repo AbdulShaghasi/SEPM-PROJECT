@@ -15,17 +15,18 @@ if (isset($uname)) {
 
      if (mysqli_num_rows($results) > 0) {
           while ($row = mysqli_fetch_array($results)) {
-               $firstname = $row["firstname"];
-               $lastname = $row["lastname"];
-               $address = $row["address"];
-               $email = $row["email"];
-               $contact_num = $row["contact_num"];
-               $_SESSION['user'] = $row["username"]; #set this for change password
-               $username = $_SESSION['user'];
-               $account_type = $row["account_type"];
-               $expiry_date = $row["expiry_date"];
+              $firstname = $row["firstname"];
+              $lastname = $row["lastname"];
+              $address = $row["address"];
+              $email = $row["email"];
+              $contact_num = $row["contact_num"];
+              $_SESSION['user'] = $row["username"]; #set this for change password
+              $username = $_SESSION['user'];
+              $password = $row["password"];
+              $account_type = $row["account_type"];
+              $expiry_date = $row["expiry_date"];
           }
-     }
+      }
 }
 
 #update the user details
